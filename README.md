@@ -64,7 +64,7 @@ $ kubectl get svc -n ansible-awx
 
 ![image](https://github.com/user-attachments/assets/3121a6b9-fb34-4e50-b2cf-9c31913aabe4)
 
-# Step 4: Access AWX Dashboard
+# Step 5: Access AWX Dashboard
 
 $ minikube service awx-demo-service --url -n ansible-awx
 http://192.168.49.2:30182                                                   -----------------> minikube ip
