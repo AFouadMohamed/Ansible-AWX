@@ -80,6 +80,10 @@ $ ![image](https://github.com/user-attachments/assets/d1582164-ff8e-4749-81c1-db
 $ kubectl get secret awx-demo-admin-password -o jsonpath="{.data.password}" -n ansible-awx | base64 --decode; echo
 7EliSIHKyM28KLQQcZ2zBzdKWGlnz6JM
 
+# Can Use Lens to get secret
+
+https://github.com/AFouadMohamed/Ansible-AWX/blob/main/All%20command%20to%20deploy%20AWX
+
 ![image](https://github.com/user-attachments/assets/842ba541-cb14-4ac9-89dc-88a773fbd69c)
 
 ![image](https://github.com/user-attachments/assets/20c09c9b-bde8-4a47-9303-c148d317c997)
