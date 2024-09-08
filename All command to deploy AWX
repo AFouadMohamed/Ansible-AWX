@@ -33,4 +33,4 @@ $ kubectl port-forward service/awx-demo-service -n ansible-awx --address 0.0.0.0
 # http://<Ubuntu-System-IP-Address>:10445                                                                    --------------------------------> Open Your Browser 
 
 # Get Password
-$ kubectl get secret awx-demo-admin-password -o jsonpath="{.data.password}" -n ansible-awx | base64 --decode; echo 7EliSIHKyM28KLQQcZ2zBzdKWGlnz6JM
+$ kubectl get secret awx-demo-admin-password -o jsonpath="{.data.password}" -n ansible-awx | base64 --decode; echo 
