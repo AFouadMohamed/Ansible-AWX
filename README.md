@@ -33,4 +33,66 @@ $ kubectl get pods -A
 
 
 # Step 3: Deploy Ansible AWX via Operator
+$ git clone https://github.com/ansible/awx-operator.git
+
+$ cd awx-operator/
+
+$ git checkout 2.4.0
+
+![image](https://github.com/user-attachments/assets/10983048-2c3f-43d5-99ba-14fb698741d8)
+
+$ export NAMESPACE=ansible-awx
+
+$ make deploy
+
+![image](https://github.com/user-attachments/assets/274cef86-7321-47c3-8249-eda24cde4827)
+
+$ kubectl get pods -n ansible-awx
+
+![image](https://github.com/user-attachments/assets/8a2983ed-abd4-47fc-a1d1-f73a92949a5c)
+
+# Step 4: Deploy AWX 
+$ cat awx-demo.yml
+
+$ kubectl create -f awx-demo.yml -n ansible-awx
+
+![image](https://github.com/user-attachments/assets/11a2e885-cdb5-48c2-b70a-f02f7b11c127)
+
+$ kubectl get pods -n ansible-awx
+
+$ kubectl get svc -n ansible-awx
+
+![image](https://github.com/user-attachments/assets/3121a6b9-fb34-4e50-b2cf-9c31913aabe4)
+
+# Step 4: Access AWX Dashboard
+
+$ minikube service awx-demo-service --url -n ansible-awx
+http://192.168.49.2:30182                                                   -----------------> minikube ip
+
+$ kubectl port-forward service/awx-demo-service -n ansible-awx --address 0.0.0.0 10445:80
+
+![image](https://github.com/user-attachments/assets/45461c74-0c27-4fbf-a9df-95df2a32f791)
+
+$ http://<Ubuntu-System-IP-Address>:10445          --------------> open browser
+
+$ ![image](https://github.com/user-attachments/assets/d1582164-ff8e-4749-81c1-db16dc40c73f)
+
+$ kubectl get secret awx-demo-admin-password -o jsonpath="{.data.password}" -n ansible-awx | base64 --decode; echo
+7EliSIHKyM28KLQQcZ2zBzdKWGlnz6JM
+
+![image](https://github.com/user-attachments/assets/842ba541-cb14-4ac9-89dc-88a773fbd69c)
+
+![image](https://github.com/user-attachments/assets/20c09c9b-bde8-4a47-9303-c148d317c997)
+
+![image](https://github.com/user-attachments/assets/847f3a3f-322c-4ddb-a947-5f02ba721bac)
+
+
+
+
+
+
+
+
+
+
 
