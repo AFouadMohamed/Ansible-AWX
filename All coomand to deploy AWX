@@ -1,0 +1,36 @@
+# Install Required Packages
+$ sudo apt install git make -y
+
+# Start minikube cluster
+$ minikube start --vm-driver=docker --addons=ingress
+
+# Execute beneath commands to verify minikube and pods status
+$ minikube status
+$ kubectl get pods -A
+
+# Deploy Ansible AWX via Operator
+$ git clone https://github.com/ansible/awx-operator.git
+$ cd awx-operator/
+$ git checkout 2.4.0
+
+# Set the namespace “ansibe-awx” and run make deploy command
+$ export NAMESPACE=ansible-awx
+$ make deploy
+
+# Status pods and SVC from ansible-awx namespace
+$ kubectl get pods -n ansible-awx
+$ kubectl get svc -n ansible-awx
+
+# Deploy AWX using following command
+$ cat awx-demo.yml
+$ kubectl create -f awx-demo.yml -n ansible-awx
+$ kubectl logs awx-operator-controller-manager-6c58d59d97-vvkvc -n ansible-awx -f
+
+# Access AWX Dashboard
+$ minikube service awx-demo-service --url -n ansible-awx http://192.168.49.2:30182                         --------------------------------> Your ip 
+$ kubectl port-forward service/awx-demo-service -n ansible-awx --address 0.0.0.0 10445:80                   --------------------------------> Allow any can access
+
+# http://<Ubuntu-System-IP-Address>:10445                                                                    --------------------------------> Open Your Browser 
+
+# Get Password
+$ kubectl get secret awx-demo-admin-password -o jsonpath="{.data.password}" -n ansible-awx | base64 --decode; echo 7EliSIHKyM28KLQQcZ2zBzdKWGlnz6JM
