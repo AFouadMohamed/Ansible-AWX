@@ -22,10 +22,13 @@ $ sudo apt install git make -y
 # Step 2: Start minikube cluster
 
 $ minikube start --vm-driver=docker --addons=ingress
+
 ![image](https://github.com/user-attachments/assets/4a0d9c6e-e9e2-4660-ada1-bd69daa30bf3)
 
 $ minikube status
+
 $ kubectl get pods -A
+
 ![image](https://github.com/user-attachments/assets/c20682a7-bff8-43c2-8941-cefd26a23da2)
 
 
